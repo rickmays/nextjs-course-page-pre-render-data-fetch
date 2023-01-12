@@ -8,7 +8,9 @@ function HomePage(props) {
   return (
     <ul>
       {products.map(product => (
-        <li key={product.id}><Link href={`/${product.id}`}>{product.title}</Link></li>
+        <li key={product.id}>
+          <Link href={`/products/${product.id}`}>{product.title}</Link>
+        </li>
       ))}
     </ul>
   );
@@ -23,9 +25,9 @@ export async function getStaticProps(context) {
   if (!data) {
     return {
       redirect: {
-        destination: '/no-data'
-      }
-    }
+        destination: "/no-data",
+      },
+    };
   }
 
   if (data.products.length === 0) {
